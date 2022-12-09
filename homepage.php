@@ -65,6 +65,15 @@
                   <a href="#contact">Contact</a>
                   <input type="text" placeholder="Search..">
                 </div>
+
+                <div class="topnav">
+                  
+                  <a href="Sign_up.php">Sign up</a>
+                  <a href="Sign_in.php">Sign in</a>
+                  
+                </div>
+
+                
               </div>
             </div>
           </div>
