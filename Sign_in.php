@@ -10,9 +10,9 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<?php session_start(); ?>
+<?php require_once "Controller.php"; ?>
     
-    <form action="LoginCode.php" method="post" enctype="multipart/form-data">
+    <form action="Sign_in.php" method="post" enctype="multipart/form-data">
     <section>
         <!--Bắt Đầu Phần Hình Ảnh-->
         <div class="img-bg">
@@ -33,7 +33,7 @@
                         <input type="password" name="password" id = "password" onkeyup='check();' required/>
                     </div>
                     <div class="input-form">
-                        <p>Forgot password? <a href="#">Change</a></p>
+                        <p>Forgot password? <a href="ForgotPass.php">Change</a></p>
                     </div>
                     <div class="nho-dang-nhap">
                         <label><input type="checkbox" name=""> Remember sign in!</label>
