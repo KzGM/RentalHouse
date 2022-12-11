@@ -11,7 +11,7 @@
  <script>
         function validate(){
 
-            if (document.getElementById("password").value != document.getElementById("confirm_password").value && document.getElementById("password").value != "")  {
+            if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
                 
                 document.getElementById("Message").style.color = "Red";
                  document.getElementById("Message").innerHTML = "Password do not match!"
@@ -28,11 +28,18 @@
 </head>
 
 <body>
-<?php require_once "Controller.php"; ?>
+<?php
+require_once "Controller.php";
 
+$email = $_SESSION['email'];
 
+if($email == false){
+    header('Location: Sign_in.php');
+  }
 
-    <form onSubmit ="return validate();" action="Sign_up.php" method="post" enctype="multipart/form-data">
+?>
+
+    <form onSubmit ="return validate();" action="new_pass.php" method="post" enctype="multipart/form-data">
     <section>
         <!--Bắt Đầu Phần Hình Ảnh-->
         <div class="img-bg">
@@ -42,15 +49,11 @@
         <!--Bắt Đầu Phần Nội Dung-->
         <div class="noi-dung">
             <div class="form">
-                <h2>Welcome to Rental Acommodation</h2>
+                <h2>Choose a new password</h2>
                 <form action="">
-                    <div class="input-form">
-                        <span>Email</span>
-                        <input type="text" name="email" required>
-                    </div>
                     
                     <div class="input-form">
-                        <span>Password</span>
+                        <span> New Password</span>
                         <input type="password" name="password" id = "password" onkeyup='validate();' required/>
                     </div>
 
@@ -62,17 +65,14 @@
                     
                    
                      <div class="input-form">
-                        <input type="submit" id = "sign_up" name="register_btn" value="Sign up"/> </input>
+                        <input type="submit" name="change_pass"/> </input>
                     </div>
                     <br>
                     <div style="position:relative;">
                     <span id = "Message" style="position:absolute; top:-10px; left:0px; font-size:20px">
                     </span></div>
                     <br>
-                    <div class="input-form">
-                        <br>
-                        <p>Already have an account? <a href="Sign_in.php">Sign in</a></p>
-                    </div>
+                    
                     <div></div>
                 
                 </form>
