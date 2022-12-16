@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE);
+
 // function to display message and redirect page
 function alert($msg, $header) {
     echo "<script type='text/javascript'>alert('$msg');
@@ -24,10 +26,18 @@ if(isset($_POST['register_btn']))
         alert("Email already exists!", "#");
     }
     else{
+   
 	$query = "INSERT into `userlogin` (Email,Password) 
     		VALUES ('$email', '$password')";
     $result = mysqli_query($conn,$query);
     if($result){
+        $query = "SELECT * FROM `userlogin` WHERE Email = '$email' AND Password = '$password'";
+	  
+	    $select = mysqli_query($conn, $query);
+        
+        $row = mysqli_fetch_assoc($select);
+		
+		$_SESSION['Email'] = $row['Email'];
 		alert("Register successfully!", "homepage.php");
         
 	}
@@ -45,6 +55,8 @@ if(isset($_POST['login_btn']))
 	$select = mysqli_query($conn, $query);
 	
 	if(mysqli_num_rows($select) > 0){
+        $row = mysqli_fetch_assoc($select);
+		$_SESSION['Email'] = $row['Email'];
         alert("Log in successfully", "homepage.php");
         
     } else { // yeah
@@ -62,7 +74,7 @@ if (isset($_POST['otp_verification'])) {
 
     
     if (mysqli_num_rows($check_query) > 0) {
-        $fetch_data = mysqli_fetch_assoc($query);
+        $fetch_data = mysqli_fetch_assoc($check_query);
         $old_pass = $fetch_data['Password'];
         $_SESSION['old_pass'] = $old_pass;
         $email = $fetch_data['Email'];
@@ -105,6 +117,36 @@ if (isset($_POST['change_pass'])) {
         }
             
     }
+
+}
+
+if (isset($_POST['Rent'])) {
+
+        $Email = $_SESSION['Email'];
+        if($Email!="")
+        {
+            alert("Rent Successfully", "#");
+        }
+        else{
+            alert("Please log in first to use this service.", "#");
+        }
+        
+    
+        
+    
+
+}
+
+
+
+if (isset($_POST["submit"])) {
+
+    $str = $_POST["search"];
+    $_SESSION["search"] = $str;
+    echo $str;
+    header('location: searchBar.php');
+
+    
 
 }
 

@@ -76,12 +76,7 @@
                     <div></div>
                 
                 </form>
-                <h3>Use social network</h3>
-                <ul class="icon-dang-nhap">
-                    <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-google" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-                </ul>
+                
             </div>
         </div>
         <!--Kết Thúc Phần Nội Dung-->
